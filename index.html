@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Expense Tracker</h1>
+    <div class="card">
+      <form id="expenseForm">
+        <input type="text" id="expenseName" placeholder="Expense Name" required>
+        <input type="number" id="expenseAmount" placeholder="Amount (₹)" required>
+        <select id="expenseCategory" required>
+          <option value="" disabled selected>Select Category</option>
+          <option value="Food">Food</option>
+          <option value="Transport">Transport</option>
+          <option value="Entertainment">Entertainment</option>
+          <option value="Utilities">Utilities</option>
+          <option value="Other">Other</option>
+        </select>
+        <select id="expenseMonth" required>
+          <option value="" disabled selected>Select Month</option>
+          <option value="January">January</option>
+          <option value="February">February</option>
+          <option value="March">March</option>
+          <option value="April">April</option>
+          <option value="May">May</option>
+          <option value="June">June</option>
+          <option value="July">July</option>
+          <option value="August">August</option>
+          <option value="September">September</option>
+          <option value="October">October</option>
+          <option value="November">November</option>
+          <option value="December">December</option>
+        </select>
+        <div class="button-group">
+          <button type="submit">Add Expense</button>
+          <button type="button" onclick="clearForm()">Clear Form</button>
+          <button type="button" onclick="saveExpense()">Save Expense</button>
+          <button type="button" onclick="undoLastAction()">Undo</button>
+        </div>
+      </form>
+    </div>
+    <div class="card">
+      <h2>Monthly Expenses</h2>
+      <p>Total: ₹<span id="totalExpenses">0</span></p>
+      <div class="chart-container">
+        <canvas id="expenseChart"></canvas>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Expense List</h2>
+      <ul id="expenseList"></ul>
+    </div>
+    <style>
+      #preloader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid white;
+    border-top: 5px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+      body {
+            font-family: Lucida ,serif;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: rgb(85, 35, 48);
+            text-align: center;
+            padding: 20px;
+        }
+        body {
+    cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><text y="20" font-size="20">❤️</text></svg>'), auto;
+}
+button {
+    cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><text y="20" font-size="20">❤️</text></svg>'), pointer;
+}
+ .container {
+            max-width: 400px;
+            margin: auto;
+            background: rgba(224, 175, 175, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        .delete-btn {
+            background: red;
+            border: none;
+            padding: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: rgb(190, 82, 82);
+        }
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.button-group button {
+  flex: 1;
+  background: #ff6f61;
+  color: rgb(214, 92, 92);
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button-group button:hover {
+  background: #b64c46;
+  transform: scale(1.05);
+}
+</style>
+  </div>
+  <script src="script.js"></script>
+</body>
+<div class="copyright">
+  <p class="made" >
+      Made with 💕 by Diya Bhatt A
+  <p>Copyright &copy; <span id="copy"></span></p>
+</div>
+</section>
+</main>
+</html>
+<div id="loader">
+  <div class="boxes">
+      <div class="box">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+      </div>
+      <div class="box">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="box">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="box">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<div id="preloader">
+  <div class="loader"></div>
+</div>
+</main>
+</html>
